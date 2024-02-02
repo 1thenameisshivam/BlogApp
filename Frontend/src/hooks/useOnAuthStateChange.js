@@ -16,4 +16,6 @@ export const useOnAuthStateChange = () => {
       navigate("/");
     }
   }, [auth, isLoggedIn]);
+
+  return auth;
 };

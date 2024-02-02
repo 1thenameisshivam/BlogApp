@@ -8,6 +8,8 @@ import Home from "./pages/home.jsx";
 import App from "./App.jsx";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore.js";
+import Create from "./pages/Create.jsx";
+import Error from "./pages/Error.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,7 +27,12 @@ const router = createBrowserRouter([
         path: "/home",
         element: <Home />,
       },
+      {
+        path: "/create",
+        element: <Create />,
+      },
     ],
+    errorElement: <Error />,
   },
 ]);
 
