@@ -108,7 +108,7 @@ const Create = () => {
 
               <form
                 onSubmit={handleSubmit(onSubmit)}
-                className="mt-8 grid bg-blue-600 rounded text-white p-8 grid-cols-6 gap-6"
+                className="mt-8 grid bg-[rgba(17,29,24)] rounded text-white p-8 grid-cols-6 gap-6"
               >
                 <div className="col-span-6 sm:col-span-3">
                   <label className="block text-sm font-medium ">Title</label>

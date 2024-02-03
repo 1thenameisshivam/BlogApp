@@ -5,6 +5,7 @@ const blogSlice = createSlice({
   initialState: {
     userBlogs: null,
     allBlogs: null,
+    updateBlogInfo: null,
   },
   reducers: {
     setUserBlogs: (state, action) => {
@@ -13,8 +14,12 @@ const blogSlice = createSlice({
     setAllBlogs: (state, action) => {
       state.allBlogs = action.payload;
     },
+    setUpdateBlogInfo: (state, action) => {
+      state.updateBlogInfo = action.payload;
+    },
   },
 });
 
-export const { setUserBlogs, setAllBlogs } = blogSlice.actions;
+export const { setUserBlogs, setAllBlogs, setUpdateBlogInfo } =
+  blogSlice.actions;
 export default blogSlice.reducer;

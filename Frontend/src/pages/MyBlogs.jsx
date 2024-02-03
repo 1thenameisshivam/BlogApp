@@ -42,6 +42,8 @@ const MyBlogs = () => {
         {data?.data.map((data) => (
           <Cards
             key={data._id}
+            blogid={data._id}
+            id={data.author}
             author={username}
             date={getDate(data.updatedAt)}
             time={getTime(data.updatedAt)}

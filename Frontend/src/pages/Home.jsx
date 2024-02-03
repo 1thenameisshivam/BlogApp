@@ -31,7 +31,8 @@ const Home = () => {
         {data?.data.map((data) => (
           <Cards
             key={data._id}
-            author={"anonomus"}
+            blogid={data.author}
+            author={"anonymous"}
             date={getDate(data.updatedAt)}
             time={getTime(data.updatedAt)}
             title={data.title}

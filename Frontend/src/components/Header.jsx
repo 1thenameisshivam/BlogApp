@@ -1,13 +1,15 @@
 import React from "react";
-import { FaBlog } from "react-icons/fa";
+import { SiTalenthouse } from "react-icons/si";
 import { useOnAuthStateChange } from "../hooks/useOnAuthStateChange";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setLogOut } from "../utils/configSlice";
+import { useOnlineStatus } from "../hooks/useOnlineStatus";
 const Header = () => {
   const auth = useOnAuthStateChange();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const status = useOnlineStatus();
   const handleLogOut = () => {
     dispatch(setLogOut());
     navigate("/");
@@ -16,12 +18,12 @@ const Header = () => {
     <div>
       <header className="body-font bg-black text-white">
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-          <h1 className="flex">
+          <Link to={"/home"} className="flex">
             <span className="text-2xl">
-              <FaBlog />
+              <SiTalenthouse />
             </span>
-            <span className="font-mono text-lg font-bold">logs</span>
-          </h1>
+            <span className="font-mono text-lg font-bold">houghts</span>
+          </Link>
           <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
             {auth && (
               <>
@@ -29,13 +31,13 @@ const Header = () => {
                   to={"/home"}
                   className="mr-5 hover:text-blue-500 text-white font-mono font-bold"
                 >
-                  Blogs
+                  Thoughts
                 </Link>
                 <Link
                   to={"/myblog"}
                   className="mr-5 hover:text-blue-500 text-white font-mono font-bold"
                 >
-                  My Blogs
+                  My Thoughts
                 </Link>
                 <Link
                   to={"/create"}
@@ -43,9 +45,15 @@ const Header = () => {
                 >
                   Create
                 </Link>
-                <a className="mr-5 hover:text-blue-500 text-white font-mono font-bold">
-                  Fourth Link
-                </a>
+                {status ? (
+                  <span className="mr-5 hover:text-blue-500 text-white font-mono font-bold">
+                    🟢 online
+                  </span>
+                ) : (
+                  <span className="mr-5 hover:text-blue-500 text-white font-mono font-bold">
+                    🔴 offline
+                  </span>
+                )}
               </>
             )}
           </nav>
