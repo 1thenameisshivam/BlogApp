@@ -63,7 +63,7 @@ const Cards = ({
       `http://localhost:4040/api/v1/singleBlog/${blogid}`
     );
     const data = await response.json();
-    console.log(data);
+
     dispatch(setUpdateBlogInfo(data.data));
     setUpdateForm(!updateForm);
   };

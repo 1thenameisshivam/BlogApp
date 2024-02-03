@@ -12,7 +12,7 @@ export const useFetchUserBlogs = (_id) => {
       "http://localhost:4040/api/v1/userBlogs/" + _id
     );
     const data = await response.json();
-    console.log(data);
+
     dispatch(setUserBlogs(data));
   };
 };

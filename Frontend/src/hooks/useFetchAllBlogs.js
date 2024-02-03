@@ -10,7 +10,7 @@ export const useFetchAllBlogs = () => {
   const fetchBlogs = async () => {
     const response = await fetch("http://localhost:4040/api/v1/allBlogs");
     const data = await response.json();
-    console.log(data);
+
     dispatch(setAllBlogs(data));
   };
 };
