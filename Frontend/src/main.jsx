@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 import appStore from "./utils/appStore.js";
 import Create from "./pages/Create.jsx";
 import Error from "./pages/Error.jsx";
+import MyBlogs from "./pages/MyBlogs.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/create",
         element: <Create />,
+      },
+      {
+        path: "/myblog",
+        element: <MyBlogs />,
       },
     ],
     errorElement: <Error />,

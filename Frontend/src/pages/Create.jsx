@@ -7,8 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 const Create = () => {
   const quet = useQuets();
   const id = useSelector((store) => store.config.userInfo._id);
-  console.log(id);
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const onSubmit = async (data) => {
     const response = await fetch("http://localhost:4040/api/v1/createBlog", {
       method: "POST",
@@ -18,6 +17,7 @@ const Create = () => {
       },
     });
     const message = await response.json();
+    reset();
     if (message.sucess) {
       toast.success(message.message, {
         position: "top-center",

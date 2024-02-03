@@ -25,12 +25,18 @@ const Header = () => {
           <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
             {auth && (
               <>
-                <a className="mr-5 hover:text-blue-500 text-white font-mono font-bold">
+                <Link
+                  to={"/home"}
+                  className="mr-5 hover:text-blue-500 text-white font-mono font-bold"
+                >
                   Blogs
-                </a>
-                <a className="mr-5 hover:text-blue-500 text-white font-mono font-bold">
+                </Link>
+                <Link
+                  to={"/myblog"}
+                  className="mr-5 hover:text-blue-500 text-white font-mono font-bold"
+                >
                   My Blogs
-                </a>
+                </Link>
                 <Link
                   to={"/create"}
                   className="mr-5 hover:text-blue-500 text-white font-mono font-bold"

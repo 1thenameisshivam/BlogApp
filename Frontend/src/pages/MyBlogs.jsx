@@ -1,10 +1,12 @@
 import React from "react";
-import { useFetchAllBlogs } from "../hooks/useFetchAllBlogs";
 import { useSelector } from "react-redux";
+import { Typewriter } from "react-simple-typewriter";
 import Cards from "../components/Cards";
-const Home = () => {
-  useFetchAllBlogs();
-  const data = useSelector((store) => store.blog.allBlogs);
+import { useFetchUserBlogs } from "../hooks/useFetchUserBlogs";
+const MyBlogs = () => {
+  const { username, _id } = useSelector((store) => store.config.userInfo);
+  useFetchUserBlogs(_id);
+  const data = useSelector((store) => store.blog.userBlogs);
 
   const getDate = (date) => {
     const dateTime = new Date(date);
@@ -25,13 +27,22 @@ const Home = () => {
 
     return `${hours}:${minutes}`;
   };
+
   return (
-    <div className="bg-black min-h-screen">
-      <div className="p-8 ">
+    <div className="bg-black min-h-screen text-white">
+      <h1 className=" text-center font-mono text-3xl font-bold">
+        Hello👋
+        <Typewriter
+          words={[username, "Amazing Day For You"]}
+          loop={9}
+          cursor={true}
+        />
+      </h1>
+      <div className="flex flex-wrap p-5 ">
         {data?.data.map((data) => (
           <Cards
             key={data._id}
-            author={"anonomus"}
+            author={username}
             date={getDate(data.updatedAt)}
             time={getTime(data.updatedAt)}
             title={data.title}
@@ -44,4 +55,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default MyBlogs;
